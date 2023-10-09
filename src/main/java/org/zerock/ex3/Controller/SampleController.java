@@ -23,9 +23,13 @@ public class SampleController {
         log.info("ex1.....................");
     }
 
-    @GetMapping({"/ex"})
+    @GetMapping({"/ex2"})
     public void exModel(Model model) {
         List<SampleDTO> list = IntStream.rangeClosed(1,20).asLongStream().mapToObj(i -> {
+            // IntStream.rangeClosed(1,20)는 1부터 20까지의 숫자를 생성하는 스트림을 생성
+            // .asLongStream()은 이를 long 형식의 스트림으로 변환
+            // .mapToObj(i -> { ... })는 각 숫자를 SampleDTO 객체로 매핑
+            // SampleDTO는 빌더 패턴을 사용하여 생성되며, sno, first, last, regTime 필드를 설정
            SampleDTO dto = SampleDTO.builder()
                    .sno(i)
                    .first("First.." + i)
@@ -33,7 +37,7 @@ public class SampleController {
                    .regTime(LocalDateTime.now())
                    .build();
            return dto;
-        }).collect(Collectors.toList());
+        }).collect(Collectors.toList()); // .collect(Collectors.toList())는 스트림 요소를 리스트로 수집
         model.addAttribute("list",list);
     }
 }
