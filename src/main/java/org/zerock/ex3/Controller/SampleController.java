@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.ex3.dto.SampleDTO;
 
 import java.time.LocalDateTime;
@@ -40,5 +41,21 @@ public class SampleController {
         }).collect(Collectors.toList());
         // .collect(Collectors.toList())는 이전 단계에서 생성된 SampleDTO 객체들을 리스트로 수집하는 부분입니다. 즉, 스트림에서 생성된 모든 SampleDTO 객체들을 하나의 리스트로 모아줍니다.
         model.addAttribute("list",list);
+    }
+
+    @GetMapping({"/exInline"})
+    public String exInline(RedirectAttributes redirectAttributes) {
+        log.info("exInline.........");
+
+        SampleDTO dto = SampleDTO.builder()
+                .sno(100L)
+                .first("First..100")
+                .last("Last...100")
+                .regTime(LocalDateTime.now())
+                .build();
+        redirectAttributes.addFlashAttribute("result","success");
+        redirectAttributes.addFlashAttribute("dto", dto);
+
+        return "redirect:/sample/ex3";
     }
 }

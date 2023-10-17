@@ -10,27 +10,10 @@
     </style>
 </head>
 <body>
-    <ul>
-        <li th:each="dto,state : ${list}">
-            <span th:if="${dto.sno % 5 == 0}" th:text = "${'--------' + dto.sno}"></span>
-            <span th:unless="${dto.sno % 5 == 0}" th:text="${dto.first}"></span>
-        </li>
-    </ul>
-<!--    3항연산자 사용-->
-    <ul>
-        <li th:each="dto,state : ${list}" th:text="${dto.sno % 5 == 0} ? ${dto.sno}"></li>
-    </ul>
-
-
-    <ul>
-        <li th:each="dto,state : ${list}" th:text="${dto.sno % 5 == 0} ? ${dto.sno} : ${dto.first}"></li>
-    </ul>
 
     <ul>
         <li th:each="dto,state : ${list}" th:class="${dto.sno % 5 == 0} ? 'target'" th:text="${dto}"></li>
     </ul>
-
-
 
 </body>
 </html>
