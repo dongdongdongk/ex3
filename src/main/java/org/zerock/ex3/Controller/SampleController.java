@@ -58,4 +58,9 @@ public class SampleController {
 
         return "redirect:/sample/ex3";
     }
+
+    @GetMapping("/ex3")
+    public void ex3(){
+        log.info("ex3");
+    }
 }
