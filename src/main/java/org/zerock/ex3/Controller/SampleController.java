@@ -24,7 +24,7 @@ public class SampleController {
         log.info("ex1.....................");
     }
 
-    @GetMapping({"/ex2"}) // 중괄호 {}를 사용하는 이유는 경로(path)를 배열 형태로 지정하여 여러 개의 경로를 한 번에 처리하기 위함 ex) @GetMapping({"/ex2", "/example2"})
+    @GetMapping({"/ex2","/exLink"}) // 중괄호 {}를 사용하는 이유는 경로(path)를 배열 형태로 지정하여 여러 개의 경로를 한 번에 처리하기 위함 ex) @GetMapping({"/ex2", "/example2"})
     public void exModel(Model model) {
         List<SampleDTO> list = IntStream.rangeClosed(1,20).asLongStream().mapToObj(i -> {
             // IntStream.rangeClosed(1,20)는 1부터 20까지의 숫자를 생성하는 스트림을 생성
