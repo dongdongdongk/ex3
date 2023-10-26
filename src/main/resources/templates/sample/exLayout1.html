@@ -6,6 +6,9 @@
 </head>
 <body>
   <h1>Fragment Test</h1>
+  <div style="border: 1px solid blue"></div>
+
+  <th:block th:replace="~{/fragments/fragment2}"></th:block>
 
   <h1>Layout 1 - 1</h1>
   <div th:replace="~{/fragments/fragment1:: part1}"></div> <!--~{} 사이에 들어가는게 경로 :: 이후가 만들어둔 fragment 이름 또는 #id 등 지정 :: 없이하면 파일내용 전체를 가져옴-->
